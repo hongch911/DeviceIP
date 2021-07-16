@@ -3,36 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="检测项" />
+    tools:context=".ShowScreenActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:orientation="vertical">
         <Button
-            android:id="@+id/goto_ip_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Get IP"/>
-        <Button
-            android:id="@+id/goto_screen_btn"
+            android:id="@+id/get_screen_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Get Screen"/>
         <Button
-            android:id="@+id/goto_key_btn"
+            android:id="@+id/get_adapter_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Key"/>
+            android:text="Get Value Adapter"/>
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="信息" />
+    </ScrollView>
+
 
 </LinearLayout>

@@ -12,7 +12,7 @@
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_yx_netprobe_MainActivity_cpp_1test(JNIEnv *env, jobject thiz) {
+Java_com_yx_netprobe_ShowIPActivity_cpp_1get_1ip(JNIEnv *env, jobject thiz) {
     std::string respstr = "Get JNI local IP!\n";
     int family, s;
     char host[NI_MAXHOST];
@@ -23,13 +23,17 @@ Java_com_yx_netprobe_MainActivity_cpp_1test(JNIEnv *env, jobject thiz) {
             continue;
         family = ifa->ifa_addr->sa_family;
         if (family == AF_INET || family == AF_INET6) {
-            s = getnameinfo(ifa->ifa_addr,
-                            (family == AF_INET) ? sizeof(struct sockaddr_in) :
-                            sizeof(struct sockaddr_in6),
-                            host, NI_MAXHOST, NULL, 0, NI_NUMERICHOST);
-            if (s != 0) {
-                __android_log_print(ANDROID_LOG_INFO, "getifaddrs", "getnameinfo() failed: %s", gai_strerror(s));
-                continue;
+//            s = getnameinfo(ifa->ifa_addr,
+//                            (family == AF_INET) ? sizeof(struct sockaddr_in) : sizeof(struct sockaddr_in6),
+//                            host, NI_MAXHOST, NULL, 0, NI_NUMERICHOST);
+//            if (s != 0) {
+//                __android_log_print(ANDROID_LOG_INFO, "getifaddrs", "getnameinfo() failed: %s", gai_strerror(s));
+//                continue;
+//            }
+            if (family == AF_INET) {
+                inet_ntop(AF_INET, &((struct sockaddr_in*)(ifa->ifa_addr))->sin_addr, host, sizeof(host));
+            } else {
+                inet_ntop(AF_INET6, &((struct sockaddr_in6*)(ifa->ifa_addr))->sin6_addr, host, sizeof(host));
             }
             __android_log_print(ANDROID_LOG_INFO, "getifaddrs", "address: <%s>", host);
             respstr += "address: [";

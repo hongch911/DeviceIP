@@ -41,9 +41,8 @@ target_link_libraries( # Specifies the target library.
         native-lib
 
         # Links the target library to the log library included in the NDK.
-        ${log-lib}
-        ifaddrslib)
+        ${log-lib})
 
 # if minimum Sdk version is >= 24 then next two lines are unnecessary
 add_subdirectory(android-ifaddrs)
-target_link_libraries(${CPP_HTTP_LIB} ifaddrslib)
+target_link_libraries(native-lib ifaddrslib)

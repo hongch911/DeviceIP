@@ -20,6 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ShowIPActivity">
+        </activity>
+        <activity android:name=".ShowScreenActivity">
+        </activity>
+        <activity android:name=".ShowKeyDownActivity">
+        </activity>
     </application>
 
 </manifest>
